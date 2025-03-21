@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
@@ -6,7 +6,6 @@ import Link from 'next/link';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 
 // Project Imports
@@ -22,7 +21,6 @@ import * as Yup from 'yup';
 
 import { AxiosError } from 'axios';
 import { type FormikHelpers, useFormik } from 'formik';
-import { type CredentialResponse, GoogleLogin } from '@react-oauth/google';
 
 interface LoginProps {
   title?: string;
@@ -37,8 +35,7 @@ interface FormValues {
 
 export default function AuthLogin({ title, subtitle, subtext }: LoginProps): React.JSX.Element {
   const router = useRouter();
-  const { login, googleLogin } = useAuth();
-  const [isGoogleSubmitting, setIsGoogleSubmitting] = useState<boolean>(false);
+  const { login } = useAuth();
 
   const validationSchema = Yup.object({
     email: Yup.string().email('Ingresa un correo válido').required('Ingresa tu correo'),
@@ -78,7 +75,7 @@ export default function AuthLogin({ title, subtitle, subtext }: LoginProps): Rea
   const hasErrorEmail = Boolean(errors.email && touched.email);
   const hasErrorPassword = Boolean(errors.password && touched.password);
 
-  const isLoading = isSubmitting || isGoogleSubmitting;
+  const isLoading = isSubmitting;
 
   return (
     <>
@@ -100,7 +97,7 @@ export default function AuthLogin({ title, subtitle, subtext }: LoginProps): Rea
       >
         <Box>
           <Typography variant="subtitle1" fontWeight={600} component="label" htmlFor="email" mb="5px">
-            Usuario
+            Correo Electrónico
           </Typography>
           <CustomTextField
             name="email"
@@ -154,40 +151,6 @@ export default function AuthLogin({ title, subtitle, subtext }: LoginProps): Rea
         >
           Iniciar Sesión
         </Button>
-        <Divider flexItem />
-        <Box sx={{ width: '100%'}}>
-          <GoogleLogin
-            onSuccess={async (response: CredentialResponse) => {
-              try {
-                setIsGoogleSubmitting(true);
-                if (response.credential) {
-                  await googleLogin(response.credential);
-                  toast.success('Sesión iniciada correctamente con Google.');
-                } else {
-                  toast.error('Error con la autenticación de Google.');
-                }
-              } catch (error) {
-                toast.error('Error con la autenticación de Google.');
-              } finally {
-                router.refresh();
-                setIsGoogleSubmitting(false);
-              }
-            }}
-            onError={() => {
-              toast.error('Error con la autenticación de Google.');
-              setIsGoogleSubmitting(false);
-            }}
-            useOneTap
-            locale="es"
-            size="large"
-            width="100%"
-            context="signin"
-            shape="rectangular"
-            text="continue_with"
-            theme="filled_black"
-            cancel_on_tap_outside
-          />
-        </Box>
       </Box>
       {subtitle}
     </>

@@ -5,7 +5,7 @@ import CreateBusinessView from '@/views/businesses/CreateBusinessView';
 
 // Metadata
 export const metadata = {
-  title: 'XicoNemi | Nuevo Negocio',
+  title: 'Loans System | Nuevo Negocio',
   description: 'Crea un nuevo negocio en la plataforma como administrador.',
 };
 

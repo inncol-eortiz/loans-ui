@@ -6,8 +6,8 @@ import Image from 'next/image';
 import { styled } from '@mui/material';
 
 const LinkStyled = styled(Link)(() => ({
-  height: '70px',
-  width: '180px',
+  height: '120px',
+  width: '120px',
   overflow: 'hidden',
   display: 'block',
 }));
@@ -15,7 +15,7 @@ const LinkStyled = styled(Link)(() => ({
 export default function Logo(): React.JSX.Element {
   return (
     <LinkStyled href="/">
-      <Image src="/images/logos/dark-logo.svg" alt="logo" height={70} width={174} priority />
+      <Image src="/images/logos/logo.png" alt="logo" height={120} width={120} priority />
     </LinkStyled>
   );
 }

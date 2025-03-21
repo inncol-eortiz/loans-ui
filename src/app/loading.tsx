@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import GlobalLoader from '@/components/shared/GlobalLoader';
 
 export const metadata: Metadata = {
-  title: 'XicoNemi | Cargando...',
+  title: 'Loans System | Cargando...',
 };
 
 export default function Loading(): React.JSX.Element {

@@ -30,13 +30,13 @@ export default function LoginView(): React.JSX.Element {
       <Grid container spacing={0} justifyContent="center" sx={{ height: '100vh' }}>
         <Grid item xs={12} sm={12} lg={4} xl={3} display="flex" justifyContent="center" alignItems="center">
           <Card elevation={9} sx={{ p: 4, zIndex: 1, width: '100%', maxWidth: '500px' }}>
-            <Box display="flex" alignItems="center" justifyContent="center">
+            <Box display="flex" alignItems="center" justifyContent="center" width="100%">
               <Logo />
             </Box>
             <AuthLogin
               subtext={
                 <Typography variant="subtitle1" textAlign="center" color="textSecondary" mb={1}>
-                  Explora Xicotepec
+                  Loans System
                 </Typography>
               }
             />

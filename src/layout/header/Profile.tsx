@@ -77,7 +77,7 @@ export default function Profile(): React.JSX.Element {
               {profile.url_image?.length > 0 ? (
                 <Avatar src={profile.url_image} alt={`${profile.name} - profile picture`} />
               ) : (
-                <Avatar {...stringToAvatar(profile ? `${profile.name}${profile.lastname}` : 'Xico Nemi')} />
+                <Avatar {...stringToAvatar(profile ? `${profile.name}${profile.lastname}` : 'Loans System')} />
               )}
             </>
           )}

@@ -5,7 +5,7 @@ import UpdateUserView from '@/views/users/UpdateUserView';
 
 // Metadata
 export const metadata = {
-  title: 'XicoNemi | Actualizar Usuario',
+  title: 'Loans System | Actualizar Usuario',
   description: 'Actualizar un usuario en la plataforma',
 };
 

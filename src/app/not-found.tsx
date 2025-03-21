@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import BackToHomeButton from '@/components/core/BackToHomeButton';
 
 export const metadata = {
-  title: 'XicoNemi | Página No Encontrada',
+  title: 'Loans System | Página No Encontrada',
 };
 
 export default function NotFound(): React.JSX.Element {
@@ -26,7 +26,7 @@ export default function NotFound(): React.JSX.Element {
         alt="logo"
         width={270}
         height={170}
-        src="/images/logos/dark-logo.svg"
+        src="/images/logos/logo.png"
         style={{
           marginBottom: '2rem',
         }}

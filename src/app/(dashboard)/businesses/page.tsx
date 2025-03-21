@@ -5,7 +5,7 @@ import BusinessesTableView from '@/views/businesses/BusinessesTableView';
 
 // Metadata
 export const metadata = {
-  title: 'XicoNemi | Negocios',
+  title: 'Loans System | Negocios',
   description: 'Administración de negocios en la plataforma',
 };
 

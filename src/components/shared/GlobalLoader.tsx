@@ -30,7 +30,7 @@ export default function GlobalLoader(): React.ReactElement {
       <Loader />
       <Image
         priority
-        src="/images/logos/logo-png.svg"
+        src="/images/logos/logo.png"
         alt="Logo"
         width={181}
         height={120}

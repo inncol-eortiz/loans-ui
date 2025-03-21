@@ -7,11 +7,11 @@ import ProviderWrapper from '@/components/providers/ProviderWrapper';
 
 // Metadata
 export const metadata: Metadata = {
-  title: 'XicoNemi | Dashboard',
-  description: 'XicoNemi, el mejor software para gestión de negocios y turismo',
+  title: 'Loans System | Dashboard',
+  description: 'Loans System, el mejor software para gestión de negocios y turismo',
   authors: [{ name: 'Dream Team' }],
   category: 'Administración de negocios y turismo',
-  applicationName: 'XicoNemi - Dashboard',
+  applicationName: 'Loans System - Dashboard',
   keywords: ['xicotepec', 'puebla', 'mexico', 'turismo', 'pueblos magicos'],
   icons: {
     icon: '/favicon.ico',
@@ -19,9 +19,9 @@ export const metadata: Metadata = {
     apple: '/images/apple-touch-icon.png',
   },
   openGraph: {
-    title: 'XicoNemi - Impulsa tu negocio en los pueblos mágicos',
+    title: 'Loans System - Impulsa tu negocio en los pueblos mágicos',
     description:
-      'Con XicoNemi, podrás gestionar tu negocio o evento de manera eficiente y sencilla. ¡Descubre cómo podemos ayudarte a crecer!',
+      'Con Loans System, podrás gestionar tu negocio o evento de manera eficiente y sencilla. ¡Descubre cómo podemos ayudarte a crecer!',
     url: 'https://pos.kornu.mx',
     type: 'website',
     images: [
@@ -29,24 +29,24 @@ export const metadata: Metadata = {
         url: '/images/seo/dashboard.jpg',
         width: 1200,
         height: 630,
-        alt: 'XicoNemi - Vista general de nuestro sistema',
+        alt: 'Loans System - Vista general de nuestro sistema',
       },
     ],
-    siteName: 'XicoNemi',
+    siteName: 'Loans System',
     locale: 'es_MX',
   },
   // TODO: Add Twitter metadata
   // twitter: {
-  //   creator: '@XicoNemi',
+  //   creator: '@Loans System',
   //   creatorId: 'id',
   //   card: 'summary_large_image',
-  //   title: 'XicoNemi - Impulsa tu negocio en los pueblos mágicos',
+  //   title: 'Loans System - Impulsa tu negocio en los pueblos mágicos',
   //   description:
-  //     'Con XicoNemi, podrás gestionar tu negocio o evento de manera eficiente y sencilla. ¡Descubre cómo podemos ayudarte a crecer!',
+  //     'Con Loans System, podrás gestionar tu negocio o evento de manera eficiente y sencilla. ¡Descubre cómo podemos ayudarte a crecer!',
   //   images: [
   //     {
   //       url: '/images/seo/dashboard.jpg',
-  //       alt: 'XicoNemi - Vista general de nuestro sistema',
+  //       alt: 'Loans System - Vista general de nuestro sistema',
   //     },
   //   ],
   // },

@@ -5,7 +5,7 @@ import CreateUserView from '@/views/users/CreateUserView';
 
 // Metadata
 export const metadata = {
-  title: 'XicoNemi | Nuevo Usuario',
+  title: 'Loans System | Nuevo Usuario',
   description: 'Crea un nuevo usuario en la plataforma',
 };
 

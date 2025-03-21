@@ -45,19 +45,15 @@ const Menuitems = [
   },
   {
     id: uniqueId(),
-    title: 'Negocios',
+    title: 'Materiales',
     icon: IconBuildingStore,
     href: paths.businesses.list,
   },
   {
-    navlabel: true,
-    subheader: 'Otras Apps',
-  },
-  {
     id: uniqueId(),
-    title: 'Lista de Tareas',
-    icon: IconListCheck,
-    href: paths.todoList,
+    title: 'Prestamos',
+    icon: IconBuildingStore,
+    href: paths.businesses.list,
   },
 ];
 

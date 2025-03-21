@@ -5,7 +5,7 @@ import UpdateBusinessView from '@/views/businesses/UpdateBusinessView';
 
 // Metadata
 export const metadata = {
-  title: 'XicoNemi | Actualizar Negocio',
+  title: 'Loans System | Actualizar Negocio',
   description: 'Actualizar un negocio en la plataforma',
 };
 

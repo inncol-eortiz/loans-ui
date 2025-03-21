@@ -5,7 +5,7 @@ import BusinessDetailsView from '@/views/businesses/BusinessDetailsView';
 
 // Metadata
 export const metadata = {
-  title: 'XicoNemi | Detalles del negocio',
+  title: 'Loans System | Detalles del negocio',
   description: 'Detalles del negocio en la plataforma',
 };
 

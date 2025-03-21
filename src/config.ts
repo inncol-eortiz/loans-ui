@@ -11,7 +11,7 @@ export interface Config {
 
 export const config = {
   site: {
-    name: 'XicoNemi',
+    name: 'Loans System',
     themeColor: '#E6077E',
     url: getSiteURL(),
     version: process.env.NEXT_PUBLIC_SITE_VERSION ?? '0.0.0',

@@ -5,7 +5,7 @@ import UsersTableView from '@/views/users/UsersTableView';
 
 // Metadata
 export const metadata = {
-  title: 'Xiconemi | Usuarios',
+  title: 'Loans System | Usuarios',
   description: 'Lista de usuarios',
 }
 

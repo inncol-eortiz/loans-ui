@@ -119,25 +119,6 @@ function AuthProvider({ children }: { children: ReactNode }): React.JSX.Element 
     }
   };
 
-  const googleLogin = async (tokenId: string): Promise<void> => {
-    const response: AxiosResponse<SignInResponse> = await axios.post<
-      SignInResponse,
-      AxiosResponse<SignInResponse>,
-      { tokenId: string }
-    >('auth/google-auth', { tokenId });
-
-    const userData = response.data.user;
-    const token = response.data.token;
-
-    void setSession(token);
-
-    if (userData) {
-      setUser(userData);
-      localStorage.setItem('userData', JSON.stringify(userData));
-      setIsLoggedIn(true);
-    }
-  };
-
   const logout = async (): Promise<void> => {
     await setSession(null);
     setIsLoggedIn(false);
@@ -151,9 +132,7 @@ function AuthProvider({ children }: { children: ReactNode }): React.JSX.Element 
   }
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, isInitialized, user, login, logout, googleLogin }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={{ isLoggedIn, isInitialized, user, login, logout }}>{children}</AuthContext.Provider>
   );
 }
 

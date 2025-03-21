@@ -36,7 +36,7 @@ export default function ErrorPage({
         alt="logo"
         width={270}
         height={170}
-        src="/images/logos/dark-logo.svg"
+        src="/images/logos/logo.png"
         style={{
           marginBottom: '2rem',
         }}

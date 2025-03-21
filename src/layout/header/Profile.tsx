@@ -73,13 +73,7 @@ export default function Profile(): React.JSX.Element {
           {isLoading || !profile ? (
             <Skeleton variant="circular" width={40} height={40} />
           ) : (
-            <>
-              {profile.url_image?.length > 0 ? (
-                <Avatar src={profile.url_image} alt={`${profile.name} - profile picture`} />
-              ) : (
-                <Avatar {...stringToAvatar(profile ? `${profile.name}${profile.lastname}` : 'Loans System')} />
-              )}
-            </>
+            <Avatar {...stringToAvatar(profile ? `${profile.first_name}${profile.last_name}` : 'Loans System')} />
           )}
         </IconButton>
         {/* ------------------------------------------- */}
@@ -114,7 +108,7 @@ export default function Profile(): React.JSX.Element {
               <Skeleton variant="text" width={100} />
             ) : (
               <Typography color="textSecondary">
-                {user?.name} {user?.lastname}
+                {user?.first_name} {user?.last_name}
               </Typography>
             )}
           </Box>

@@ -1,7 +1,10 @@
 export enum UserRoles {
-  Common = 'Common',
-  BusinessOwner = 'BusinessOwner',
-  SuperAdmin = 'SuperAdmin',
+  Student = 'Student',
+  Teacher = 'Teacher',
+  Secretary = 'Secretary',
+  LabTechnician = 'LabTechnician',
+  Executive = 'Executive',
+  Administrative = 'Administrative',
 }
 
 export interface SignUp {
@@ -17,35 +20,36 @@ export interface SignUp {
 
 export interface SignInResponse {
   user: User;
-  token: string;
-}
-
-export interface CreateUser {
-  name: string;
-  lastname: string;
-  email: string;
-  password: string;
-  tel: string;
-  type: UserRoles;
-  gender: string;
-  birthday: number;
+  access_token: string;
+  token_type: string;
 }
 
 export interface User {
-  id: string;
-  subscriptionId: null;
-  facebookId: null;
-  name: string;
-  lastname: string;
+  id: number;
+  user_type: UserRoles;
+  last_name: string;
   email: string;
+  phone_number: string;
+  registration_date: Date;
+  first_name: string;
+  middle_name: string;
+  username: string;
   password: string;
-  tel: string;
-  birthday: number;
-  gender: string;
-  url_image: string;
-  type: UserRoles;
-  status: boolean;
-  token: null;
+  status: string;
+  update_date: Date;
+}
+
+export interface CreateUser {
+  user_type: string;
+  last_name: string;
+  email: string;
+  phone_number: string;
+  registration_date: Date;
+  first_name: string;
+  middle_name: string;
+  username: string;
+  password: string;
+  status: string;
 }
 
 export interface UpdatePassword {

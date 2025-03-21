@@ -164,7 +164,7 @@ export default function BusinessDetailsView({ businessId }: BusinessDetailsViewP
                 <Grid size={{ xs: 12, md: 6 }}>
                   <Typography variant="h5">Nombre Completo</Typography>
                   <Typography variant="body1">
-                    {ownerData.name} {ownerData.lastname}
+                    {ownerData.first_name} {ownerData.last_name}
                   </Typography>
                 </Grid>
                 <Grid size={{ xs: 12, md: 6 }}>
@@ -175,8 +175,8 @@ export default function BusinessDetailsView({ businessId }: BusinessDetailsViewP
                 </Grid>
                 <Grid size={{ xs: 12, md: 6 }}>
                   <Typography variant="h5">Número Telefónico</Typography>
-                  <MuiLink href={`tel:${ownerData.tel}`} underline="always" color={categoryColor}>
-                    {ownerData.tel}
+                  <MuiLink href={`tel:${ownerData.phone_number}`} underline="always" color={categoryColor}>
+                    {ownerData.phone_number}
                   </MuiLink>
                 </Grid>
               </>

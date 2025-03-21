@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars -- required */
+/* eslint-disable @typescript-eslint/no-unused-vars -- required */
 'use client';
 
 import * as React from 'react';
@@ -19,11 +21,9 @@ import { createUser, updateUserById } from '@/lib/services/api';
 import Loader from '@components/shared/Loader';
 import SelectInput from '@components/forms/SelectInput';
 import PasswordField from '@components/forms/PasswordField';
-import CustomDatePicker from '@components/forms/CustomDatePicker';
 
 // Third Party Imports
 import * as yup from 'yup';
-import dayjs, { unix } from 'dayjs';
 import { useFormik } from 'formik';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
@@ -51,7 +51,7 @@ export default function CreateUserForm({ userData }: { userData?: User }): React
 
   const { mutate: updateUser, isPending: isPendingUpdate } = useMutation({
     mutationKey: ['updateUser'],
-    mutationFn: ({ data }: { data: CreateUser }) => updateUserById({ userId: userData!.id, data }),
+    mutationFn: ({ data }: { data: CreateUser }) => updateUserById({ userId: String(userData!.id), data }),
     onSuccess: async () => handleOnSuccess('Usuario actualizado correctamente'),
     onError: (error: Error) => {
       toast.error(error.message ? error.message : 'Ha ocurrido un error al intentar actualizar el usuario');
@@ -60,16 +60,14 @@ export default function CreateUserForm({ userData }: { userData?: User }): React
 
   const isLoading = isPending || isPendingUpdate;
 
-  const { values, handleSubmit, handleChange, errors, touched, setFieldValue } = useFormik({
+  const { values, handleSubmit, handleChange, errors, touched } = useFormik({
     initialValues: {
-      name: userData?.name ?? '',
-      lastname: userData?.lastname ?? '',
+      name: userData?.first_name ?? '',
+      lastname: userData?.last_name ?? '',
       email: userData?.email ?? '',
-      tel: userData?.tel ?? '',
+      tel: userData?.phone_number ?? '',
       password: '',
-      gender: userData?.gender ?? '',
-      type: userData?.type ?? '',
-      birthday: userData?.birthday ? unix(userData.birthday) : null,
+      type: userData?.user_type ?? '',
     },
     validationSchema: yup.object().shape({
       name: yup.string().required('Este campo es requerido'),
@@ -80,20 +78,20 @@ export default function CreateUserForm({ userData }: { userData?: User }): React
         .matches(/^\d{10}$/, 'El número de teléfono debe tener 10 dígitos')
         .required('Este campo es requerido'),
       password: yup.string().required('Este campo es requerido'),
-      gender: yup.string().required('Este campo es requerido'),
       type: yup.string().required('Este campo es requerido'),
-      birthday: yup.date().required('Este campo es requerido'),
     }),
     onSubmit: (sendValues) => {
       const formattedValues = {
+        phone_number: sendValues.tel,
+        first_name: sendValues.name,
+        last_name: sendValues.lastname,
         ...sendValues,
-        birthday: sendValues.birthday ? dayjs(sendValues.birthday).unix() : null,
       };
 
       if (isUpdate) {
-        updateUser({ data: formattedValues as CreateUser });
+        // updateUser({ data: formattedValues as CreateUser });
       } else {
-        registerUser(formattedValues as CreateUser);
+        // registerUser(formattedValues as CreateUser);
       }
     },
   });
@@ -104,10 +102,7 @@ export default function CreateUserForm({ userData }: { userData?: User }): React
   const hasErrorEmail = Boolean(touched.email && errors.email);
   const hasErrorTel = Boolean(touched.tel && errors.tel);
   const hasErrorPassword = Boolean(touched.password && errors.password);
-  const hasErrorGender = Boolean(touched.gender && errors.gender);
   const hasErrorType = Boolean(touched.type && errors.type);
-  const hasErrorBirthday = Boolean(touched.birthday && errors);
-
   return (
     <>
       {isLoading ? <Loader /> : null}
@@ -186,36 +181,6 @@ export default function CreateUserForm({ userData }: { userData?: User }): React
               disabled={isLoading}
             />
           </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
-            <SelectInput
-              fullWidth
-              id="gender"
-              name="gender"
-              type="gender"
-              label="Género"
-              variant="outlined"
-              value={values.gender}
-              labelId="select-gender"
-              onChange={handleChange}
-              disabled={isLoading}
-              hasError={hasErrorGender}
-              errorMessage={errors.gender}
-              items={[
-                {
-                  label: 'Masculino',
-                  value: 'Masculino',
-                },
-                {
-                  label: 'Femenino',
-                  value: 'Femenino',
-                },
-                {
-                  label: 'Otro',
-                  value: 'Otro',
-                },
-              ]}
-            />
-          </Grid>
           <Grid size={{ xs: 12, md: 8 }}>
             <SelectInput
               fullWidth
@@ -244,15 +209,6 @@ export default function CreateUserForm({ userData }: { userData?: User }): React
                   value: 'SuperAdmin',
                 },
               ]}
-            />
-          </Grid>
-          <Grid size={{ xs: 12, md: 4 }}>
-            <CustomDatePicker
-              label="Fecha de Nacimiento"
-              value={values.birthday}
-              onChange={(date) => setFieldValue('birthday', date)}
-              error={hasErrorBirthday}
-              helperText={hasErrorBirthday ? errors.birthday : ''}
             />
           </Grid>
           <Grid

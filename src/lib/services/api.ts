@@ -49,7 +49,7 @@ export const deleteBusinessById = (businessId: string): Promise<void> =>
 // ### OWNERS ####
 
 export const getAllOwners = (): Promise<User[]> =>
-  getAllUsers().then((users: User[]) => users.filter((user: User) => user.type === UserRoles.BusinessOwner));
+  getAllUsers().then((users: User[]) => users.filter((user: User) => user.user_type === UserRoles.Administrative));
 
 // ### PROFILE ###
 export const getProfile = (userId: string): Promise<User> =>

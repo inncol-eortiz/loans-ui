@@ -1,3 +1,4 @@
+/* eslint-disable camelcase -- API returns withoyt CC */
 'use client';
 
 import * as React from 'react';
@@ -116,8 +117,8 @@ export default function CreateBusinessForm({ businessData }: { businessData?: Bu
 
   const ownersItems = React.useMemo(
     () =>
-      owners?.map(({ name, lastname, id, status }: User) => ({
-        label: `${name} ${lastname}`,
+      owners?.map(({ first_name, last_name, id, status }: User) => ({
+        label: `${first_name} ${last_name}`,
         value: id,
         disabled: !status,
       })) ?? [],

@@ -2,9 +2,8 @@ import { paths } from '@/paths';
 import {
   IconBrandGoogleAnalytics,
   IconUsersGroup,
-  IconBuildingStore,
-  IconListCheck,
-  IconUserCog,
+  IconArchive,
+  IconPackages,
 } from '@tabler/icons-react';
 
 import { v4 as uniqueId } from 'uuid';
@@ -26,12 +25,6 @@ const Menuitems = [
     navlabel: true,
     subheader: 'Mi Cuenta',
   },
-  {
-    id: uniqueId(),
-    title: 'Perfil',
-    icon: IconUserCog,
-    href: paths.profile,
-  },
 
   {
     navlabel: true,
@@ -46,13 +39,13 @@ const Menuitems = [
   {
     id: uniqueId(),
     title: 'Materiales',
-    icon: IconBuildingStore,
+    icon: IconPackages,
     href: paths.businesses.list,
   },
   {
     id: uniqueId(),
     title: 'Prestamos',
-    icon: IconBuildingStore,
+    icon: IconArchive,
     href: paths.businesses.list,
   },
 ];

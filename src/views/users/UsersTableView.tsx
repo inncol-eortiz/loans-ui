@@ -5,7 +5,6 @@ import Link from 'next/link';
 
 // MUI Imports
 import Stack from '@mui/material/Stack';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
@@ -45,12 +44,9 @@ export default function UsersTableView(): React.JSX.Element {
   const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 70 },
     {
-      field: 'image',
-      headerName: 'Imagen',
-      width: 130,
-      sortable: false,
-      filterable: false,
-      renderCell: ({ value }) => <Avatar src={value} alt={`${value as string} profile image`} />,
+      field: 'username',
+      headerName: 'Nombre de Usuario',
+      width: 150,
     },
     {
       field: 'name',
@@ -96,7 +92,7 @@ export default function UsersTableView(): React.JSX.Element {
           <Stack display="flex" flexDirection="row" alignItems="center" justifyContent="center" height="100%" gap={1}>
             <IconButton
               onClick={toggleModal}
-              color="primary"
+              color="error"
               aria-label="Delete"
               size="small"
               loading={isLoading}
@@ -125,11 +121,11 @@ export default function UsersTableView(): React.JSX.Element {
     () =>
       users?.map((userRow) => ({
         id: userRow.id,
-        image: userRow.url_image?.length > 0 ? userRow.url_image : `${userRow.name} ${userRow.lastname}`,
-        name: `${userRow.name} ${userRow.lastname}`,
-        type: userRow.type,
+        username: userRow.username,
+        name: `${userRow.first_name} ${userRow.middle_name} ${userRow.last_name}`,
+        type: userRow.user_type,
         email: userRow.email,
-        tel: userRow.tel,
+        tel: userRow.phone_number,
         actions: userRow.id,
       })) ?? [],
     [users]

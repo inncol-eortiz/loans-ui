@@ -105,10 +105,10 @@ function AuthProvider({ children }: { children: ReactNode }): React.JSX.Element 
       SignInResponse,
       AxiosResponse<SignInResponse>,
       SignInWithPasswordParams
-    >('auth/sign-in', params);
+    >('auth/login', params);
 
     const userData = response.data.user;
-    const token = response.data.token;
+    const token = response.data.access_token;
 
     void setSession(token);
 

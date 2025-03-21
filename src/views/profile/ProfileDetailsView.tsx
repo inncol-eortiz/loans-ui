@@ -18,19 +18,19 @@ import { useAuth } from '@hooks/useAuth';
 import { getProfile } from '@lib/services/api';
 import { stringToAvatar } from '@utils/stringToAvatar';
 
+import getUserRole from '@/utils/getUserRole';
+
 import TabPanel from '@/components/shared/TabPanel';
 import DashboardCard from '@components/shared/DashboardCard';
 import ProfileSkeleton from '@components/profile/ProfileSkeleton';
+import ChangePasswordTab from '@/components/profile/ChangePassword';
+import ProfileDropdownMenu from '@/components/profile/ProfileDropdownMenu';
 
 // Third Party Imports
 import { useQuery } from '@tanstack/react-query';
 
 // Assets
 import { IconLock, IconSettings, IconUser } from '@tabler/icons-react';
-import getUserRole from '@/utils/getUserRole';
-import { formatDate } from '@/utils/formatDate';
-import ChangePasswordTab from '@/components/profile/ChangePassword';
-import ProfileDropdownMenu from '@/components/profile/ProfileDropdownMenu';
 
 export default function ProfileDetailsView(): React.JSX.Element {
   const [value, setValue] = React.useState(0);
@@ -86,34 +86,22 @@ export default function ProfileDetailsView(): React.JSX.Element {
                     gap: 2,
                   }}
                 >
-                  {profile.url_image?.length > 0 ? (
-                    <Avatar
-                      sx={{
-                        width: 80,
-                        height: 80,
-                      }}
-                      src={profile.url_image}
-                      alt={`${profile.name} profile image`}
-                    />
-                  ) : (
-                    <Avatar
-                      {...stringToAvatar(profile.name)}
-                      sx={{
-                        width: 80,
-                        height: 80,
-                      }}
-                    />
-                  )}
+                  <Avatar
+                    {...stringToAvatar(`${profile.first_name} ${profile.middle_name} ${profile.last_name}`)}
+                    sx={{
+                      width: 80,
+                      height: 80,
+                    }}
+                  />
                   <Stack direction="column">
                     <Typography variant="h4">
-                      {profile.name} {profile.lastname}
+                      {profile.first_name} {profile.middle_name} {profile.last_name}
                     </Typography>
                     <Typography variant="caption">
-                      ID: {profile.id} - {getUserRole(profile.type)}
+                      ID: {profile.id} - {getUserRole(profile.user_type)}
                     </Typography>
                   </Stack>
-                  <Box
-                  >
+                  <Box>
                     <ProfileDropdownMenu />
                   </Box>
                 </Grid>
@@ -129,11 +117,13 @@ export default function ProfileDetailsView(): React.JSX.Element {
                     <Grid container spacing={2}>
                       <Grid size={{ xs: 12, md: 6 }}>
                         <Typography variant="h6">Nombre/s</Typography>
-                        <Typography variant="body1">{profile.name}</Typography>
+                        <Typography variant="body1">{profile.first_name}</Typography>
                       </Grid>
                       <Grid size={{ xs: 12, md: 6 }}>
                         <Typography variant="h6">Apellido/s</Typography>
-                        <Typography variant="body1">{profile.lastname}</Typography>
+                        <Typography variant="body1">
+                          {profile.middle_name} {profile.last_name}
+                        </Typography>
                       </Grid>
                       <Grid size={{ xs: 12, md: 6 }}>
                         <Typography variant="h6">Correo Electrónico</Typography>
@@ -141,19 +131,11 @@ export default function ProfileDetailsView(): React.JSX.Element {
                       </Grid>
                       <Grid size={{ xs: 12, md: 6 }}>
                         <Typography variant="h6">Teléfono</Typography>
-                        <Typography variant="body1">{profile.tel}</Typography>
-                      </Grid>
-                      <Grid size={{ xs: 12, md: 6 }}>
-                        <Typography variant="h6">Fecha de Nacimiento</Typography>
-                        <Typography variant="body1">{formatDate(profile.birthday)}</Typography>
-                      </Grid>
-                      <Grid size={{ xs: 12, md: 6 }}>
-                        <Typography variant="h6">Género</Typography>
-                        <Typography variant="body1">{profile.gender}</Typography>
+                        <Typography variant="body1">{profile.phone_number}</Typography>
                       </Grid>
                       <Grid size={{ xs: 12, md: 6 }}>
                         <Typography variant="h6">Rol/Tipo de Usuario</Typography>
-                        <Typography variant="body1">{getUserRole(profile.type)}</Typography>
+                        <Typography variant="body1">{getUserRole(profile.user_type)}</Typography>
                       </Grid>
                       <Grid
                         size={{ xs: 12, md: 6 }}
